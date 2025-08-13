@@ -27,7 +27,8 @@ class ContentHotspotTwigExtension extends \Twig_Extension
   {
     return array(
       new \Twig_SimpleFunction('hotspot_inline', array($this, 'getInlineHotspot'), array('needs_environment' => TRUE, 'is_safe' => array('html'))),
-      new \Twig_SimpleFunction('hotspot', array($this, 'getHotspot'), array('needs_environment' => TRUE, 'is_safe' => array('html')))
+      new \Twig_SimpleFunction('hotspot', array($this, 'getHotspot'), array('needs_environment' => TRUE, 'is_safe' => array('html'))),
+      new \Twig_SimpleFunction('is_hotspot_can_edit', array($this, 'isCanEdit')),
     );
   }
   
@@ -71,6 +72,11 @@ class ContentHotspotTwigExtension extends \Twig_Extension
       'clickZone' => $clickZone,
       'canEdit' => $this->canEdit
     ));
+  }
+
+  public function isCanEdit()
+  {
+    return $this->canEdit;
   }
   
   public function setCanEdit()
