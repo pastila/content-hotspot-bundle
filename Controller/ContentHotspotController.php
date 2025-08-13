@@ -13,14 +13,15 @@ class ContentHotspotController extends Controller
   {
     $alias = $request->get('alias');
     $text = $request->get('text');
+    $className = $this->getParameter('hotspot_entity');
     
     $clickZone = $this->getDoctrine()
-      ->getRepository($this->getParameter('hotspot_entity'))
+      ->getRepository($className)
       ->findOneBy(['alias' => $alias]);
     
     if (!$clickZone)
     {
-      $clickZone = new ContentHotspot();
+      $clickZone = new $className();
       $clickZone->setAlias($alias);
     }
     
