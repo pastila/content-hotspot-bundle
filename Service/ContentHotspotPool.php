@@ -9,11 +9,11 @@ use Accurateweb\ContentHotspotBundle\Model\ContentHotspotInterface;
 class ContentHotspotPool
 {
   /**
-   * @var iterable|ContentHotspotInterface[]
+   * @var array|iterable|ContentHotspotInterface[]
    */
   private $hotspots;
 
-  public function __construct (iterable $hotspots)
+  public function __construct ($hotspots)
   {
     $this->hotspots = [];
 
@@ -24,7 +24,7 @@ class ContentHotspotPool
   }
 
   /**
-   * @return ContentHotspotInterface[]|iterable
+   * @return ContentHotspotInterface[]|iterable|array
    */
   public function getHotspots ()
   {
